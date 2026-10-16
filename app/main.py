@@ -102,7 +102,7 @@ def apply_for_leave(request: LeaveRequestInput):
 
     # BUG-001: Intentionally incorrect for the agent POC.
     # The correct comparison is requested_days > leave_balances[employee_id].
-    if requested_days < leave_balances[employee_id]:
+    if requested_days > leave_balances[employee_id]:
         raise HTTPException(
             status_code=400,
             detail="Insufficient leave balance",
